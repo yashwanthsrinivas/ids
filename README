@@ -1,0 +1,4 @@
+********************************************************* A SMALL INTRUSION DETECTION SYSTEM *******************************************************************
+
+Captures packets on the registered interface and based on the data each packet carries , decisions are taken as to either alert the System admin or to  just continue procesessing it .  
+
