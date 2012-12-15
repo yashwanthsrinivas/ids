@@ -134,6 +134,7 @@ void mycallback( char * args ,  struct   pcap_pkthdr * mypkt ,  u_char * data )
 
 
 int main(int argc , char ** argv ){
+<<<<<<< HEAD
 
 
   while(1)
@@ -181,6 +182,26 @@ int main(int argc , char ** argv ){
    int opt=0;
    int cmp;
    if((cmp=pcap_compile( ihandle , &mybpf , filter , opt , nm  ))==0)printf("Compiling perfect . compile return value %d \n",cmp);else  printf("compiling error : %s ... compile return value %d\n",pcap_geterr(ihandle),cmp);
+=======
+  if(argc==1){printf("Enter the interface too U ass !");return -1;}
+  char iface[4];
+  strcpy(iface,argv[1]);
+  char *er;
+  pcap_t * ihandle=pcap_open_live(iface,25,0,10,er);
+  if(ihandle==NULL)perror("pcap_open_live:");
+  struct pcap_pkthdr * pcapheader;
+  struct ether_header * eheader;
+  int no=5;
+  char * pktdata;
+  printf("Interface is %s\n",iface);
+  struct bpf_program  mybpf ; 
+  char * fil=argv[2];
+  printf("The filter is %s\n",fil);
+   bpf_u_int32 nm = 0;
+   int opt=0;
+   int cmp;
+   if((cmp=pcap_compile( ihandle , &mybpf , fil , opt , nm  ))==0)printf("Compiling perfect . compile return value %d \n",cmp);else  printf("compiling error : %s ... compile return value %d\n",pcap_geterr(ihandle),cmp);
+>>>>>>> 414b00198d441cb7143997a99f93df9cc9989df7
      if(pcap_setfilter(ihandle , &mybpf )==0)printf("Filter set properly");
      perror("after loop");
   pcap_loop(ihandle , -1 , mycallback , NULL);
