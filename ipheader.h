@@ -55,3 +55,4 @@ struct ipheader {
 #define ipheadermacro(ip)  ( ( ip->headerversion )  & 0x0F ) 
 
 
+extern struct ipheader * ip;

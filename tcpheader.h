@@ -25,5 +25,6 @@ struct tcpheader {
   u_short urgptr;                 /* urgent pointer */
 };
 
+extern struct tcpheader * tcp; 
 
   
